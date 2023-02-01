@@ -1,9 +1,14 @@
+import {config} from "dotenv";
+config();
+
 import express, {Request, Response} from "express";
 import mongoose from 'mongoose';
 import Deck from './models/Deck';
 
 const PORT = 5000;
+
 const app = express();
+
 app.use(express.json()); //Adds support to json payloads
 
 
@@ -25,9 +30,8 @@ app.post('/decks', async (req: Request, res: Response)=>{
 
 mongoose.set('strictQuery', true); //I did this to remove a warning;
 
-mongoose.connect(
-    'mongodb+srv://andrenovais:b7c4Nn8wlot75DpI@cluster0.9h0vm3q.mongodb.net/?retryWrites=true&w=majority'
-    ).then(()=>{
+//The "!" is just so typescript doesn't complain
+mongoose.connect(process.env.MONGO_URL!).then(()=>{
         console.log(`Listening on port ${PORT}`);
         app.listen(PORT);
     })
