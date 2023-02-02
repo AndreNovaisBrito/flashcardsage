@@ -5,7 +5,42 @@
   text-align: center;
 }
 
-.logo {
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.App form{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.decks{
+  display: grid;
+  width: 600px;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+.decks li{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  background: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: #000;
+}
+
+.decks li:hover {
+  background:#eee;
+}
+
+/* .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
@@ -38,4 +73,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
