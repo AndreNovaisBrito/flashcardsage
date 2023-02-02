@@ -40,10 +40,20 @@ app.post('/decks', async (req: Request, res: Response)=>{
     res.json(createdDeck);
 });
 
+app.delete('/decks/:deckId', async (req: Request, res: Response)=>{
+    //TODO: 
+    //Get the deck id from the url
+    const deckId = req.params.deckId;
+    //Delete the deck from mongo
+    const deck = await Deck.findByIdAndDelete(deckId);
+    //Return the deleted deck to the user who made the request
+    res.json(deck);
+});
+
 mongoose.set('strictQuery', true); //I did this to remove a warning;
 
 //The "!" is just so typescript doesn't complain
 mongoose.connect(process.env.MONGO_URL!).then(()=>{
         console.log(`Listening on port ${PORT}`);
         app.listen(PORT);
-    });
+});

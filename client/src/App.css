@@ -27,6 +27,7 @@
 }
 .decks li{
   display:flex;
+  position:relative;
   justify-content: center;
   align-items: center;
   height: 120px;
@@ -36,8 +37,12 @@
   color: #000;
 }
 
-.decks li:hover {
-  background:#eee;
+.decks li button{
+  position: absolute;
+  font-size: 10px;
+  top: 5px;
+  right: 5px;
+
 }
 
 /* .logo {
