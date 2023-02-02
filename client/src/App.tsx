@@ -13,7 +13,7 @@ type TDeck = {
 function App() {
   //Array deesctructuring 
   // const [one, two, three] = [1, 2, 3]
-  const [decks, setDecks] = useState([]);
+  const [decks, setDecks] = useState<TDeck[]>([]);
   const [title, setTitle] = useState(''); 
 
   async function handleCreateDeck(e: React.FormEvent){
@@ -41,11 +41,9 @@ function App() {
   return (
     <div className="App">
       <ul className='decks'>
-        {
-          decks.map((deck)=>(
+        {decks.map((deck)=>(
             <li key={deck._id}>{deck.title}</li>
-          ))
-        }
+          ))}
       </ul>
       <form onSubmit={handleCreateDeck}>
         <label htmlFor="deck-title">Deck Title</label>
