@@ -36,26 +36,29 @@ export default function Deck() {
   },[deckId]);
 
   return (
-    <div className="Deck">
-      <ul className="cards">
-        {cards.map((card, index) => (
-          <li key={index}>
-            <button onClick={() => handleDeleteCard(index)}>X</button>
-            {card}
-          </li>
-        ))}
-      </ul>
-      <form onSubmit={handleCreateDeck}>
-        <label htmlFor="card-text">Card Text</label>
-        <input
-          id="card-text"
-          value={text}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setText(e.target.value);
-          }}
-        />
-        <button>Create Card</button>
-      </form>
+    <div className="container">
+      <div className="Deck">
+        <h1>{deck?.title}</h1>
+        <ul className="cards">
+          {cards.map((card, index) => (
+            <li key={index}>
+              <button onClick={() => handleDeleteCard(index)}>X</button>
+              {card}
+            </li>
+          ))}
+        </ul>
+        <form onSubmit={handleCreateDeck}>
+          <label htmlFor="card-text">Card Text</label>
+          <input
+            id="card-text"
+            value={text}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setText(e.target.value);
+            }}
+          />
+          <button>Create Card</button>
+        </form>
+      </div>
     </div>
   );
 }
